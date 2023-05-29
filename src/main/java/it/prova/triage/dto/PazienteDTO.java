@@ -2,6 +2,7 @@ package it.prova.triage.dto;
 
 
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,15 +33,18 @@ public class PazienteDTO {
 	@NotBlank(message = "{nome.notblank}")
 	private String codiceFiscale;
 	
+	@NotBlank(message = "{registrazione.notblank}")
+	private LocalDate registrazione;
+	
 	private StatoPaziente statoPaziente;
 	
 	public Paziente buildPazienteModel() {
-		Paziente result = Paziente.builder().id(this.id).nome(this.nome).cognome(this.cognome).codiceFiscale(codiceFiscale).statoPaziente(this.statoPaziente).build();
+		Paziente result = Paziente.builder().id(this.id).nome(this.nome).cognome(this.cognome).codiceFiscale(codiceFiscale).registrazione(registrazione).statoPaziente(this.statoPaziente).build();
 		return result;
 	}
 	
 	public static PazienteDTO buildPazienteDTOFromModel(Paziente pazienteModel) {
-		PazienteDTO result = PazienteDTO.builder().id(pazienteModel.getId()).nome(pazienteModel.getNome()).codiceFiscale(pazienteModel.getCognome()).codiceFiscale(pazienteModel.getCodiceFiscale()).statoPaziente(pazienteModel.getStatoPaziente()).build();
+		PazienteDTO result = PazienteDTO.builder().id(pazienteModel.getId()).nome(pazienteModel.getNome()).cognome(pazienteModel.getCognome()).codiceFiscale(pazienteModel.getCodiceFiscale()).registrazione(pazienteModel.getRegistrazione()).statoPaziente(pazienteModel.getStatoPaziente()).build();
 		return result;
 	}
 	

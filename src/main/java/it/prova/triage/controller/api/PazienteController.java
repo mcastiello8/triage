@@ -36,7 +36,7 @@ public class PazienteController {
 		return pazienteService.visualizzaPaziente(id);
 	}
 	
-	@PostMapping
+	@PostMapping("/inserisciNuovo")
 	public PazienteDTO createNew(@Valid @RequestBody PazienteDTO pazienteInput) {
 		if (pazienteInput.getId() != null)
 			throw new RuntimeException();

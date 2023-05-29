@@ -8,8 +8,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import it.prova.triage.dto.PazienteDTO;
+import it.prova.triage.model.Paziente;
 import it.prova.triage.model.Ruolo;
+import it.prova.triage.model.StatoPaziente;
 import it.prova.triage.model.Utente;
+import it.prova.triage.service.paziente.PazienteService;
 import it.prova.triage.service.ruolo.RuoloService;
 import it.prova.triage.service.utente.UtenteService;
 
@@ -20,7 +24,9 @@ public class TriageApplication implements CommandLineRunner {
 	private RuoloService ruoloServiceInstance;
 	@Autowired
 	private UtenteService utenteServiceInstance;
-
+	@Autowired
+	private PazienteService pazienteServiceInstance;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(TriageApplication.class, args);
 	}
@@ -55,5 +61,10 @@ public class TriageApplication implements CommandLineRunner {
 // l'inserimento avviene come created ma io voglio attivarlo
 			utenteServiceInstance.changeUserAbilitation(utente.getId());
 		}
+		
+		Paziente paziente = new Paziente("Mario", "Rossi", "MARRSS123", LocalDate.now(), StatoPaziente.IN_ATTESA_VISITA);
+		PazienteDTO pazienteDTO = PazienteDTO.buildPazienteDTOFromModel(paziente);
+		pazienteServiceInstance.inserisciPaziente(pazienteDTO);
+		
 	}
 }

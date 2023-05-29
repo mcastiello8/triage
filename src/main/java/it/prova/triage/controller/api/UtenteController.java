@@ -97,8 +97,6 @@ public class UtenteController {
 
 	}
 	
-
-	
 	@PostMapping("/create")
 	public UtenteDTO creaUtente(@Valid @RequestBody UtenteDTO utenteInput) {
 		return  UtenteDTO.buildUtenteDTOFromModel(utenteService.inserisciNuovo(utenteInput.buildUtenteModel(true)));

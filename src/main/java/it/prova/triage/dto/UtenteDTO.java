@@ -5,8 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 import it.prova.triage.model.Ruolo;
 import it.prova.triage.model.StatoUtente;
@@ -24,20 +22,14 @@ public class UtenteDTO {
 
 	private Long id;
 
-	@NotBlank(message = "{username.notblank}")
-	@Size(min = 3, max = 15, message = "Il valore inserito '${validatedValue}' deve essere lungo tra {min} e {max} caratteri")
 	private String username;
 
-	@NotBlank(message = "{password.notblank}")
-	@Size(min = 8, max = 15, message = "Il valore inserito deve essere lungo tra {min} e {max} caratteri")
 	private String password;
 
 	private String confermaPassword;
 
-	@NotBlank(message = "{nome.notblank}")
 	private String nome;
 
-	@NotBlank(message = "{cognome.notblank}")
 	private String cognome;
 
 

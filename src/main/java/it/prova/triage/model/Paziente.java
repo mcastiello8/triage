@@ -37,4 +37,16 @@ public class Paziente {
 	@Column(name = "statopaziente")
 	private StatoPaziente statoPaziente;
 	
+	
+	public Paziente(String nome, String cognome, String codiceFiscale, LocalDate registrazione, StatoPaziente statoPaziente) {
+		super();
+		this.nome = nome;
+		this.cognome = cognome;
+		this.codiceFiscale = codiceFiscale;
+		this.registrazione = registrazione;
+		this.statoPaziente = statoPaziente;
+	}
+	
+	
+	
 }
